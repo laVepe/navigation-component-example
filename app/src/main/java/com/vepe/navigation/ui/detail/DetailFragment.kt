@@ -1,0 +1,40 @@
+package com.vepe.navigation.ui.detail
+
+import android.arch.lifecycle.ViewModelProviders
+import android.os.Bundle
+import android.support.v4.app.Fragment
+import android.view.LayoutInflater
+import android.view.View
+import android.view.ViewGroup
+import com.vepe.navigation.R
+import com.vepe.navigation.presentation.detail.DetailViewModel
+import kotlinx.android.synthetic.main.frg_detail.view.*
+
+
+class DetailFragment : Fragment() {
+
+    private lateinit var viewModel: DetailViewModel
+
+    private lateinit var title: String
+
+    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
+                              savedInstanceState: Bundle?): View {
+        title = arguments?.let {
+            val safeArgs = DetailFragmentArgs.fromBundle(it)
+            safeArgs.title
+        } ?: "null"
+
+        return inflater.inflate(R.layout.frg_detail, container, false)
+    }
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        viewModel = ViewModelProviders.of(this).get(DetailViewModel::class.java)
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+
+        view.detail_text.text = context?.getString(R.string.detail_message, title)
+    }
+}

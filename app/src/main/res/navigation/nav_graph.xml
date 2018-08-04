@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    app:startDestination="@id/mainFragment">
+
+    <activity
+        android:id="@+id/loginActivity"
+        android:name="com.vepe.navigation.ui.login.LoginActivity"
+        android:label="LoginActivity"
+        tools:layout="@layout/act_login" />
+
+    <fragment
+        android:id="@+id/mainFragment"
+        android:name="com.vepe.navigation.ui.home.HomeFragment"
+        android:label="@string/home"
+        tools:layout="@layout/frg_main">
+        <action
+            android:id="@+id/action_create"
+            app:destination="@id/createFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right" />
+        <action
+            android:id="@+id/action_detail"
+            app:destination="@id/detailFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/detailFragment"
+        android:name="com.vepe.navigation.ui.detail.DetailFragment"
+        android:label="@string/detail"
+        tools:layout="@layout/frg_detail">
+        <argument
+            android:name="title"
+            android:defaultValue="null"
+            app:argType="string" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/createFragment"
+        android:name="com.vepe.navigation.ui.create.CreateItemFragment"
+        android:label="@string/create"
+        tools:layout="@layout/frg_create" />
+
+    <fragment
+        android:id="@+id/deepLinkFragment"
+        android:name="com.vepe.navigation.ui.deeplink.DeepLinkFragment"
+        android:label="@string/deep_link"
+        tools:layout="@layout/frg_deeplink">
+        <argument
+            android:name="deep_link_message"
+            android:defaultValue="No message"
+            app:argType="string" />
+        <deepLink app:uri="www.example.com/{deep_link_message}"/>
+    </fragment>
+
+    <fragment
+        android:id="@+id/settingsFragment"
+        android:name="com.vepe.navigation.ui.settings.SettingsFragment"
+        android:label="@string/settings"
+        tools:layout="@layout/frg_settings"/>
+</navigation>

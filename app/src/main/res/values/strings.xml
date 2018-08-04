@@ -1,0 +1,19 @@
+<resources>
+    <string name="app_name">NavigationExample</string>
+    <string name="home">Home</string>
+    <string name="detail">Detail</string>
+    <string name="deep_link">Deep Link</string>
+    <string name="settings">Settings</string>
+    <string name="sign_out">Sign Out</string>
+
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+    <string name="create">Create item</string>
+    <string name="username">Username</string>
+    <string name="password">Password</string>
+    <string name="login">Login</string>
+    <string name="invalid_credentials_message">Username and password must be at least 5 letters long</string>
+    <string name="item_title">Item title</string>
+    <string name="add_item">Add item</string>
+    <string name="detail_message">Detail of %s</string>
+</resources>

@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <group android:checkableBehavior="single">
+        <item
+            android:id="@+id/mainFragment"
+            android:icon="@android:drawable/ic_dialog_email"
+            android:title="@string/home" />
+        <item
+            android:id="@+id/deepLinkFragment"
+            android:icon="@android:drawable/ic_dialog_map"
+            android:title="@string/deep_link" />
+        <item
+            android:id="@+id/settingsFragment"
+            android:icon="@android:drawable/ic_dialog_info"
+            android:title="@string/settings" />
+    </group>
+</menu>
