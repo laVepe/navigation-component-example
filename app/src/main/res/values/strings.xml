@@ -16,4 +16,5 @@
     <string name="item_title">Item title</string>
     <string name="add_item">Add item</string>
     <string name="detail_message">Detail of %s</string>
+    <string name="profile">Profile</string>
 </resources>

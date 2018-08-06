@@ -49,6 +49,11 @@
         tools:layout="@layout/frg_create" />
 
     <fragment
+        android:id="@+id/profileFragment"
+        android:name="com.vepe.navigation.ui.profile.ProfileFragment"
+        android:label="@string/profile" />
+
+    <fragment
         android:id="@+id/deepLinkFragment"
         android:name="com.vepe.navigation.ui.deeplink.DeepLinkFragment"
         android:label="@string/deep_link"

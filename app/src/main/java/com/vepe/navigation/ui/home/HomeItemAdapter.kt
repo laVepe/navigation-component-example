@@ -9,7 +9,6 @@ import android.view.ViewGroup
 import android.widget.TextView
 import androidx.navigation.Navigation
 import com.vepe.navigation.R
-import com.vepe.navigation.ui.detail.DetailFragmentArgs
 
 
 class HomeItemAdapter : ListAdapter<String, HomeItemAdapter.ViewHolder>(HomeItemDiffCallback()) {
@@ -28,12 +27,9 @@ class HomeItemAdapter : ListAdapter<String, HomeItemAdapter.ViewHolder>(HomeItem
 
         fun bind(item: String) {
             title.text = item
-            view.setOnClickListener(
-                    Navigation.createNavigateOnClickListener(R.id.action_detail,
-                            DetailFragmentArgs.Builder()
-                                    .setTitle(item)
-                                    .build()
-                                    .toBundle()))
+            val actionDetail = HomeFragmentDirections.ActionDetail()
+            actionDetail.setTitle(item)
+            view.setOnClickListener { Navigation.findNavController(view).navigate(actionDetail) }
         }
     }
 
