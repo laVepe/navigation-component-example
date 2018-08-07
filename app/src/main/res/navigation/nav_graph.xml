@@ -46,12 +46,23 @@
         android:id="@+id/createFragment"
         android:name="com.vepe.navigation.ui.create.CreateItemFragment"
         android:label="@string/create"
-        tools:layout="@layout/frg_create" />
+        tools:layout="@layout/frg_create"/>
 
     <fragment
         android:id="@+id/profileFragment"
         android:name="com.vepe.navigation.ui.profile.ProfileFragment"
-        android:label="@string/profile" />
+        android:label="@string/profile"
+        tools:layout="@layout/frg_profile">
+        <action
+            android:id="@+id/action_update"
+            app:destination="@id/updateProfileFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/updateProfileFragment"
+        android:name="com.vepe.navigation.ui.profile.UpdateProfileFragment"
+        android:label="@string/update_profile"
+        tools:layout="@layout/frg_update_profile" />
 
     <fragment
         android:id="@+id/deepLinkFragment"

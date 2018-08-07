@@ -12,7 +12,6 @@ import android.view.MenuItem
 import android.widget.Button
 import android.widget.TextView
 import androidx.navigation.NavController
-import androidx.navigation.Navigation
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.NavigationUI
 import com.vepe.navigation.R
@@ -46,7 +45,7 @@ class MainActivity : AppCompatActivity() {
     private fun setupDrawer() {
         NavigationUI.setupWithNavController(nav_view, navController)
 
-        // sets username in drawer header
+        // sets username and button listener in drawer header
         nav_view.getHeaderView(0).apply {
             findViewById<TextView>(R.id.viewUserEmail)?.text = username
             findViewById<Button>(R.id.viewSignOut)?.setOnClickListener {
@@ -96,6 +95,5 @@ class MainActivity : AppCompatActivity() {
     }
 
     // back button support
-    override fun onSupportNavigateUp() = NavigationUI.navigateUp(drawer_layout,
-            Navigation.findNavController(this, R.id.my_nav_host_fragment))
+    override fun onSupportNavigateUp() = NavigationUI.navigateUp(drawer_layout, navController)
 }

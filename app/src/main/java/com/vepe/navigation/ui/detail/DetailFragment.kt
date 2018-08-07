@@ -15,15 +15,8 @@ class DetailFragment : Fragment() {
 
     private lateinit var viewModel: DetailViewModel
 
-    private lateinit var title: String
-
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
                               savedInstanceState: Bundle?): View {
-        title = arguments?.let {
-            val safeArgs = DetailFragmentArgs.fromBundle(it)
-            safeArgs.title
-        } ?: "null"
-
         return inflater.inflate(R.layout.frg_detail, container, false)
     }
 
@@ -34,6 +27,10 @@ class DetailFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        val title = arguments?.let {
+            val safeArgs = DetailFragmentArgs.fromBundle(it)
+            safeArgs.title
+        } ?: "null"
 
         view.detail_text.text = context?.getString(R.string.detail_message, title)
     }

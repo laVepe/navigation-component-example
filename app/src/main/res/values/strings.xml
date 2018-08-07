@@ -17,4 +17,5 @@
     <string name="add_item">Add item</string>
     <string name="detail_message">Detail of %s</string>
     <string name="profile">Profile</string>
+    <string name="update_profile">Update Profile</string>
 </resources>

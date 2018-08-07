@@ -11,7 +11,6 @@ import androidx.navigation.NavController
 import androidx.navigation.fragment.findNavController
 import com.vepe.navigation.R
 import com.vepe.navigation.presentation.login.LoginViewModel
-import com.vepe.navigation.ui.main.MainActivityArgs
 import kotlinx.android.synthetic.main.frg_login.*
 
 
@@ -42,11 +41,9 @@ class LoginFragment: Fragment() {
         if (valid) {
             // call finish so login activity won't show up after back button clicked in home fragment
             activity?.finish()
-            navController.navigate(R.id.action_start_main,
-                    MainActivityArgs.Builder()
-                            .setUsername(username ?: "anonym")
-                            .build()
-                            .toBundle())
+            val startMainAction = LoginFragmentDirections.ActionStartMain()
+            startMainAction.setUsername(username ?: "anonym")
+            navController.navigate(startMainAction)
         }
         else Toast.makeText(context, getString(R.string.invalid_credentials_message), Toast.LENGTH_SHORT).show()
     }
