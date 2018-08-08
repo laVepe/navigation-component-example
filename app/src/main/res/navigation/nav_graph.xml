@@ -37,9 +37,10 @@
         android:label="@string/detail"
         tools:layout="@layout/frg_detail">
         <argument
-            android:name="title"
-            android:defaultValue="null"
-            app:argType="string" />
+            android:name="item"
+            android:defaultValue="@null"
+            app:nullable="true"
+            app:argType="com.vepe.navigation.model.Item" />
     </fragment>
 
     <fragment

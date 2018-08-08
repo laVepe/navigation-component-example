@@ -7,6 +7,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.vepe.navigation.R
+import com.vepe.navigation.model.Item
 import com.vepe.navigation.presentation.detail.DetailViewModel
 import kotlinx.android.synthetic.main.frg_detail.view.*
 
@@ -27,11 +28,13 @@ class DetailFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        val title = arguments?.let {
+        val item: Item? = arguments?.let {
             val safeArgs = DetailFragmentArgs.fromBundle(it)
-            safeArgs.title
-        } ?: "null"
+            safeArgs.item
+        }
 
-        view.detail_text.text = context?.getString(R.string.detail_message, title)
+        item?.let {
+            view.detail_text.text = context?.getString(R.string.detail_message, it.index, it.title, it.value)
+        }
     }
 }

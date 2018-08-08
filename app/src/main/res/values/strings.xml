@@ -15,7 +15,7 @@
     <string name="invalid_credentials_message">Username and password must be at least 5 letters long</string>
     <string name="item_title">Item title</string>
     <string name="add_item">Add item</string>
-    <string name="detail_message">Detail of %s</string>
+    <string name="detail_message">Item detail:\nindex: %d\ntitle: %s\nvalue: %.2f$</string>
     <string name="profile">Profile</string>
     <string name="update_profile">Update Profile</string>
 </resources>
