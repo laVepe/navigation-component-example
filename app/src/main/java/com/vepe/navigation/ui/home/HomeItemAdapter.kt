@@ -30,7 +30,7 @@ class HomeItemAdapter : ListAdapter<String, HomeItemAdapter.ViewHolder>(HomeItem
             title.text = item
             val actionDetail = HomeFragmentDirections.ActionDetail()
             actionDetail.setItem(Item(adapterPosition + 1, item, 12.90))
-            view.setOnClickListener { Navigation.findNavController(view).navigate(actionDetail) }
+            view.setOnClickListener(Navigation.createNavigateOnClickListener(R.id.action_detail, actionDetail.arguments))
         }
     }
 

@@ -2,7 +2,11 @@
 <navigation xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
     app:startDestination="@id/mainFragment">
+
+    <action android:id="@+id/action_condition_met"
+        app:destination="@id/premiumContentFragment"/>
 
     <activity
         android:id="@+id/loginActivity"
@@ -50,20 +54,24 @@
         tools:layout="@layout/frg_create"/>
 
     <fragment
-        android:id="@+id/profileFragment"
-        android:name="com.vepe.navigation.ui.profile.ProfileFragment"
-        android:label="@string/profile"
-        tools:layout="@layout/frg_profile">
+        android:id="@+id/freeContentFragment"
+        android:name="com.vepe.navigation.ui.content.FreeContentFragment"
+        android:label="@string/free_content"
+        tools:layout="@layout/frg_free_content">
         <action
             android:id="@+id/action_update"
-            app:destination="@id/updateProfileFragment" />
+            app:destination="@id/premiumContentFragment" />
     </fragment>
 
     <fragment
-        android:id="@+id/updateProfileFragment"
-        android:name="com.vepe.navigation.ui.profile.UpdateProfileFragment"
-        android:label="@string/update_profile"
-        tools:layout="@layout/frg_update_profile" />
+        android:id="@+id/premiumContentFragment"
+        android:name="com.vepe.navigation.ui.content.PremiumContentFragment"
+        android:label="Premium Content"
+        tools:layout="@layout/frg_premium_content" >
+        <action
+            android:id="@+id/action_condition_not_met"
+            app:destination="@id/premium_flow" />
+    </fragment>
 
     <fragment
         android:id="@+id/deepLinkFragment"
@@ -77,9 +85,21 @@
         <deepLink app:uri="www.example.com/{deep_link_message}"/>
     </fragment>
 
-    <fragment
-        android:id="@+id/settingsFragment"
-        android:name="com.vepe.navigation.ui.settings.SettingsFragment"
-        android:label="@string/settings"
-        tools:layout="@layout/frg_settings"/>
+    <navigation android:id="@+id/premium_flow"
+        app:startDestination="@id/premiumStep1Fragment">
+        <fragment
+            android:id="@+id/premiumStep1Fragment"
+            android:name="com.vepe.navigation.ui.premium.PremiumStep1Fragment"
+            android:label="Buy Premium"
+            tools:layout="@layout/frg_premium_step1">
+            <action
+                android:id="@+id/action_premium_next"
+                app:destination="@id/premiumStep2Fragment" />
+        </fragment>
+        <fragment
+            android:id="@+id/premiumStep2Fragment"
+            android:name="com.vepe.navigation.ui.premium.PremiumStep2Fragment"
+            android:label="Buy Premium"
+            tools:layout="@layout/frg_premium_step2" />
+    </navigation>
 </navigation>

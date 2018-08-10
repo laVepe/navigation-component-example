@@ -6,16 +6,12 @@
             android:icon="@android:drawable/ic_dialog_email"
             android:title="@string/home" />
         <item
-            android:id="@+id/profileFragment"
+            android:id="@+id/freeContentFragment"
             android:icon="@android:drawable/ic_dialog_dialer"
-            android:title="@string/profile" />
+            android:title="@string/free_content" />
         <item
             android:id="@+id/deepLinkFragment"
             android:icon="@android:drawable/ic_dialog_map"
             android:title="@string/deep_link" />
-        <item
-            android:id="@+id/settingsFragment"
-            android:icon="@android:drawable/ic_dialog_info"
-            android:title="@string/settings" />
     </group>
 </menu>

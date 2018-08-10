@@ -8,6 +8,8 @@ class MainViewModel: ViewModel() {
 
     private val items: MutableLiveData<List<String>> = MutableLiveData()
 
+    var hasPremium = false
+
     fun getItems(): LiveData<List<String>> = items
 
     fun prepareItems() {

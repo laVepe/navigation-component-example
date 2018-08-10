@@ -82,7 +82,7 @@ class MainActivity : AppCompatActivity() {
         val notificationManager = applicationContext.getSystemService(Context.NOTIFICATION_SERVICE) as? NotificationManager
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
             notificationManager?.createNotificationChannel(NotificationChannel(
-                        "deeplink", "Deep Links", NotificationManager.IMPORTANCE_HIGH))
+                    "deeplink", "Deep Links", NotificationManager.IMPORTANCE_HIGH))
         }
 
         // create notification
@@ -95,14 +95,25 @@ class MainActivity : AppCompatActivity() {
         notificationManager?.notify(0, builder.build())
     }
 
-    // back button support
-    override fun onSupportNavigateUp() = NavigationUI.navigateUp(drawer_layout, navController)
+    // up button support
+    override fun onSupportNavigateUp() =
+            // check if going up from 'buy premium' screen
+            if (navController.currentDestination.id == R.id.premiumStep1Fragment) {
+                // need to pop also premium content fragment
+                navController.popBackStack(R.id.premiumContentFragment, true)
+            } else
+                NavigationUI.navigateUp(drawer_layout, navController)
 
     override fun onBackPressed() {
         if (drawer_layout.isDrawerOpen(GravityCompat.START)) {
             drawer_layout.closeDrawer(GravityCompat.START)
         } else {
-            super.onBackPressed()
+            // check if going back from 'buy premium' screen
+            if (navController.currentDestination.id == R.id.premiumStep1Fragment) {
+                // need to pop also premium content fragment
+                navController.popBackStack(R.id.premiumContentFragment, true)
+            } else super.onBackPressed()
         }
     }
+
 }
