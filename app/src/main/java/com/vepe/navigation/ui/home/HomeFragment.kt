@@ -55,7 +55,7 @@ class HomeFragment : Fragment() {
         recycler.layoutManager = LinearLayoutManager(context)
         val itemDecor = DividerItemDecoration(context, RecyclerView.VERTICAL)
         recycler.addItemDecoration(itemDecor)
-        recycler.adapter = HomeItemAdapter()
+        recycler.adapter = HomeItemAdapter(viewModel)
         viewModel.prepareItems()
     }
 }

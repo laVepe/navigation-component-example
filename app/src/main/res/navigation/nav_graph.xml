@@ -45,6 +45,16 @@
             android:defaultValue="@null"
             app:nullable="true"
             app:argType="com.vepe.navigation.model.Item" />
+        <argument
+            android:name="category"
+            android:defaultValue="UNDEFINED"
+            app:nullable="false"
+            app:argType="com.vepe.navigation.model.Category"/>
+        <argument
+            android:name="list"
+            android:defaultValue="@null"
+            app:nullable="true"
+            app:argType="com.vepe.navigation.model.Item[]"/>
     </fragment>
 
     <fragment

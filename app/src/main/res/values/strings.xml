@@ -15,7 +15,7 @@
     <string name="invalid_credentials_message">Username and password must be at least 5 letters long</string>
     <string name="item_title">Item title</string>
     <string name="add_item">Add item</string>
-    <string name="detail_message">Item detail:\nindex: %d\ntitle: %s\nvalue: %.2f$</string>
+    <string name="detail_message">Item detail:\nindex: %d\ntitle: %s\nvalue: %.2f$\n\ncategory: %s\n\n\nlast seen:\n%s</string>
     <string name="free_content">Free Content</string>
     <string name="buy_premium">Buy Premium</string>
     <string name="buy_premium_message">This is a premium feature.\nYou have to buy a PRO version.</string>

@@ -98,18 +98,18 @@ class MainActivity : AppCompatActivity() {
     // up button support
     override fun onSupportNavigateUp() =
             // check if going up from 'buy premium' screen
-            if (navController.currentDestination.id == R.id.premiumStep1Fragment) {
+            if (navController.currentDestination?.id == R.id.premiumStep1Fragment) {
                 // need to pop also premium content fragment
                 navController.popBackStack(R.id.premiumContentFragment, true)
             } else
-                NavigationUI.navigateUp(drawer_layout, navController)
+                NavigationUI.navigateUp(navController, drawer_layout)
 
     override fun onBackPressed() {
         if (drawer_layout.isDrawerOpen(GravityCompat.START)) {
             drawer_layout.closeDrawer(GravityCompat.START)
         } else {
             // check if going back from 'buy premium' screen
-            if (navController.currentDestination.id == R.id.premiumStep1Fragment) {
+            if (navController.currentDestination?.id == R.id.premiumStep1Fragment) {
                 // need to pop also premium content fragment
                 navController.popBackStack(R.id.premiumContentFragment, true)
             } else super.onBackPressed()

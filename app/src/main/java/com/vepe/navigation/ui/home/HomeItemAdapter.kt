@@ -7,12 +7,15 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
-import androidx.navigation.Navigation
+import androidx.navigation.findNavController
 import com.vepe.navigation.R
+import com.vepe.navigation.model.Category
 import com.vepe.navigation.model.Item
+import com.vepe.navigation.presentation.main.MainViewModel
 
 
-class HomeItemAdapter : ListAdapter<String, HomeItemAdapter.ViewHolder>(HomeItemDiffCallback()) {
+class HomeItemAdapter(val viewModel: MainViewModel)
+    : ListAdapter<String, HomeItemAdapter.ViewHolder>(HomeItemDiffCallback()) {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val inflater = LayoutInflater.from(parent.context)
@@ -20,24 +23,44 @@ class HomeItemAdapter : ListAdapter<String, HomeItemAdapter.ViewHolder>(HomeItem
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        holder.bind(getItem(position))
+        holder.bind(Item(position + 1, getItem(position), 12.90))
     }
 
     inner class ViewHolder(val view: View) : RecyclerView.ViewHolder(view) {
         private val title: TextView = view.findViewById(R.id.item_title)
 
-        fun bind(item: String) {
-            title.text = item
-            val actionDetail = HomeFragmentDirections.ActionDetail()
-            actionDetail.setItem(Item(adapterPosition + 1, item, 12.90))
-            view.setOnClickListener(Navigation.createNavigateOnClickListener(R.id.action_detail, actionDetail.arguments))
+        fun bind(item: Item) {
+            title.text = item.title
+
+            view.setOnClickListener {
+                view.findNavController().navigate(R.id.action_detail,
+                setupInputData(item, adapterPosition).arguments)
+            }
+        }
+    }
+
+    private fun setupInputData(item: Item, adapterPosition: Int): HomeFragmentDirections.ActionDetail {
+        return HomeFragmentDirections.ActionDetail().apply {
+            // demonstrates sending Parcelable objects through safeArgs
+            setItem(item)
+
+            // demonstrates sending enum values through safeArgs
+            // if adapterPosition == 0 it takes default value specified in layout xml file
+            if (adapterPosition != 0) {
+                setCategory(
+                        Category.values()[(adapterPosition + 1) % Category.values().size])
+            }
+
+            // demonstrates sending an array of values through safeArgs
+            setList(viewModel.lastSeenItems.reversed().toTypedArray())
+            viewModel.lastSeenItems.add(item)
         }
     }
 
     class HomeItemDiffCallback : DiffUtil.ItemCallback<String>() {
 
-        override fun areItemsTheSame(oldItem: String?, newItem: String?): Boolean = oldItem == newItem
+        override fun areItemsTheSame(oldItem: String, newItem: String): Boolean = oldItem == newItem
 
-        override fun areContentsTheSame(oldItem: String?, newItem: String?): Boolean = oldItem == newItem
+        override fun areContentsTheSame(oldItem: String, newItem: String): Boolean = oldItem == newItem
     }
 }
