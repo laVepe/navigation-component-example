@@ -14,20 +14,19 @@ import android.widget.Button
 import android.widget.TextView
 import androidx.navigation.NavController
 import androidx.navigation.fragment.NavHostFragment
+import androidx.navigation.navArgs
 import androidx.navigation.ui.NavigationUI
 import com.vepe.navigation.R
 import kotlinx.android.synthetic.main.act_main.*
 
 class MainActivity : AppCompatActivity() {
 
-    private lateinit var username: String
+    private val mainActivityArgs by navArgs<MainActivityArgs>()
     private lateinit var navController: NavController
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.act_main)
-
-        username = MainActivityArgs.fromBundle(intent?.extras).username
 
         val host: NavHostFragment = supportFragmentManager
                 .findFragmentById(R.id.my_nav_host_fragment) as NavHostFragment? ?: return
@@ -48,7 +47,7 @@ class MainActivity : AppCompatActivity() {
 
         // sets username and button listener in drawer header
         nav_view.getHeaderView(0).apply {
-            findViewById<TextView>(R.id.viewUserEmail)?.text = username
+            findViewById<TextView>(R.id.viewUserEmail)?.text = mainActivityArgs.username
             findViewById<Button>(R.id.viewSignOut)?.setOnClickListener {
                 finish()
                 navController.navigate(R.id.loginActivity)

@@ -14,7 +14,7 @@ import com.vepe.navigation.presentation.login.LoginViewModel
 import kotlinx.android.synthetic.main.frg_login.*
 
 
-class LoginFragment: Fragment() {
+class LoginFragment : Fragment() {
 
     private lateinit var viewModel: LoginViewModel
     private lateinit var navController: NavController
@@ -33,7 +33,9 @@ class LoginFragment: Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         navController = findNavController()
-        loginButton.setOnClickListener{ login(loginUsernameText.text.toString(), loginPasswordText.text.toString()) }
+        loginButton.setOnClickListener {
+            login(loginUsernameText.text.toString(), loginPasswordText.text.toString())
+        }
     }
 
     private fun login(username: String?, password: String?) {
@@ -41,10 +43,9 @@ class LoginFragment: Fragment() {
         if (valid) {
             // call finish so login activity won't show up after back button clicked in home fragment
             activity?.finish()
-            val startMainAction = LoginFragmentDirections.ActionStartMain()
-            startMainAction.setUsername(username ?: "anonym")
+            val startMainAction = LoginFragmentDirections.actionStartMain(username ?: "anonym")
             navController.navigate(startMainAction)
-        }
-        else Toast.makeText(context, getString(R.string.invalid_credentials_message), Toast.LENGTH_SHORT).show()
+        } else Toast.makeText(context, getString(R.string.invalid_credentials_message),
+                Toast.LENGTH_SHORT).show()
     }
 }

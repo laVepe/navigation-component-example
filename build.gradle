@@ -2,13 +2,13 @@
 
 buildscript {
     ext.kotlin_version = '1.3.11'
-    ext.navigation_version = '1.0.0-alpha08'
+    ext.navigation_version = '1.0.0-alpha11'
     repositories {
         google()
         jcenter()
     }
     dependencies {
-        classpath 'com.android.tools.build:gradle:3.3.0-alpha07'
+        classpath 'com.android.tools.build:gradle:3.3.0'
         classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
         classpath "android.arch.navigation:navigation-safe-args-gradle-plugin:$navigation_version"
         // NOTE: Do not place your application dependencies here; they belong
