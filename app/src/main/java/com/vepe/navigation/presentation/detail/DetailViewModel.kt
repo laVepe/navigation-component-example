@@ -1,6 +1,6 @@
 package com.vepe.navigation.presentation.detail
 
-import android.arch.lifecycle.ViewModel
+import androidx.lifecycle.ViewModel
 
 
 class DetailViewModel : ViewModel() {

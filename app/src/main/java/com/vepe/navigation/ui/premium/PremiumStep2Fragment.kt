@@ -1,18 +1,18 @@
 package com.vepe.navigation.ui.premium
 
-import android.arch.lifecycle.ViewModelProviders
 import android.os.Bundle
-import android.support.v4.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.fragment.app.Fragment
+import androidx.lifecycle.ViewModelProviders
 import androidx.navigation.fragment.findNavController
 import com.vepe.navigation.R
 import com.vepe.navigation.presentation.main.MainViewModel
 import kotlinx.android.synthetic.main.frg_premium_step2.view.*
 
 
-class PremiumStep2Fragment: Fragment() {
+class PremiumStep2Fragment : Fragment() {
 
     private lateinit var viewModel: MainViewModel
 

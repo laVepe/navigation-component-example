@@ -1,7 +1,7 @@
 package com.vepe.navigation.presentation.settings
 
-import android.arch.lifecycle.ViewModel
+import androidx.lifecycle.ViewModel
 
 
-class SettingsViewModel: ViewModel() {
+class SettingsViewModel : ViewModel() {
 }

@@ -1,11 +1,11 @@
 package com.vepe.navigation.presentation.main
 
-import android.arch.lifecycle.LiveData
-import android.arch.lifecycle.MutableLiveData
-import android.arch.lifecycle.ViewModel
+import androidx.lifecycle.LiveData
+import androidx.lifecycle.MutableLiveData
+import androidx.lifecycle.ViewModel
 import com.vepe.navigation.model.Item
 
-class MainViewModel: ViewModel() {
+class MainViewModel : ViewModel() {
 
     private val items: MutableLiveData<List<String>> = MutableLiveData()
 
@@ -22,8 +22,7 @@ class MainViewModel: ViewModel() {
                 list.add("${it + 1}. item")
             }
             items.postValue(list)
-        }
-        else items.postValue(items.value)
+        } else items.postValue(items.value)
     }
 
     fun addItem(title: String) {

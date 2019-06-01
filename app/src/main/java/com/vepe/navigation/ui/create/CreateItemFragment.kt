@@ -1,18 +1,18 @@
 package com.vepe.navigation.ui.create
 
-import android.arch.lifecycle.ViewModelProviders
 import android.os.Bundle
-import android.support.v4.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.fragment.app.Fragment
+import androidx.lifecycle.ViewModelProviders
 import androidx.navigation.findNavController
 import com.vepe.navigation.R
 import com.vepe.navigation.presentation.main.MainViewModel
 import kotlinx.android.synthetic.main.frg_create.*
 
 
-class CreateItemFragment: Fragment() {
+class CreateItemFragment : Fragment() {
 
     private lateinit var viewModel: MainViewModel
 
@@ -31,7 +31,7 @@ class CreateItemFragment: Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        createButton.setOnClickListener{
+        createButton.setOnClickListener {
             viewModel.addItem(addItemTitle.text.toString())
             it.findNavController().navigateUp()
         }
